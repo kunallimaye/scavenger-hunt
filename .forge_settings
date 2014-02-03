@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+<forge>
+<analytics>
+<enabled>false</enabled>
+</analytics>
+</forge>
+<activatorChoice>WEB_XML</activatorChoice>
+<rootpath>/rest</rootpath>
+</configuration>
