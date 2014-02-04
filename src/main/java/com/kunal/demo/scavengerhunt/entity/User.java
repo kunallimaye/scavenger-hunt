@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
-import com.kunal.demo.scavengerhunt.entity.Group;
+import com.kunal.demo.scavengerhunt.entity.UserGroup;
 import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -30,7 +30,7 @@ public class User implements Serializable {
 	private int version = 0;
 
 	@ManyToOne(optional = false)
-	private Group group;
+	private UserGroup userGroup;
 
 	@Column
 	private String userName;
@@ -82,12 +82,12 @@ public class User implements Serializable {
 		return super.hashCode();
 	}
 
-	public Group getGroup() {
-		return this.group;
+	public UserGroup getGroup() {
+		return this.userGroup;
 	}
 
-	public void setGroup(final Group group) {
-		this.group = group;
+	public void setGroup(final UserGroup group) {
+		this.userGroup = group;
 	}
 
 	public String getUserName() {

@@ -11,31 +11,31 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import com.kunal.demo.scavengerhunt.entity.Group;
+import com.kunal.demo.scavengerhunt.entity.UserGroup;
 
 /**
  * 
  */
 @Stateless
 @Path("/groups")
-public class GroupEndpoint
+public class UserGroupEndpoint
 {
-   @PersistenceContext(unitName = "forge-default")
+   @PersistenceContext(unitName = "scavenger-hunt")
    private EntityManager em;
 
    @POST
    @Consumes("application/json")
-   public Response create(Group entity)
+   public Response create(UserGroup entity)
    {
       em.persist(entity);
-      return Response.created(UriBuilder.fromResource(GroupEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      return Response.created(UriBuilder.fromResource(UserGroupEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
    }
 
    @DELETE
    @Path("/{id:[0-9][0-9]*}")
    public Response deleteById(@PathParam("id") Long id)
    {
-      Group entity = em.find(Group.class, id);
+      UserGroup entity = em.find(UserGroup.class, id);
       if (entity == null)
       {
          return Response.status(Status.NOT_FOUND).build();
@@ -49,9 +49,9 @@ public class GroupEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<Group> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM Group g WHERE g.id = :entityId ORDER BY g.id", Group.class);
+      TypedQuery<UserGroup> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM Group g WHERE g.id = :entityId ORDER BY g.id", UserGroup.class);
       findByIdQuery.setParameter("entityId", id);
-      Group entity;
+      UserGroup entity;
       try
       {
          entity = findByIdQuery.getSingleResult();
@@ -69,16 +69,16 @@ public class GroupEndpoint
 
    @GET
    @Produces("application/json")
-   public List<Group> listAll()
+   public List<UserGroup> listAll()
    {
-      final List<Group> results = em.createQuery("SELECT DISTINCT g FROM Group g ORDER BY g.id", Group.class).getResultList();
+      final List<UserGroup> results = em.createQuery("SELECT DISTINCT g FROM Group g ORDER BY g.id", UserGroup.class).getResultList();
       return results;
    }
 
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")
-   public Response update(Group entity)
+   public Response update(UserGroup entity)
    {
       entity = em.merge(entity);
       return Response.noContent().build();

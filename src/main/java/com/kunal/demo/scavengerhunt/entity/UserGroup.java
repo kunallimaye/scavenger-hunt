@@ -1,18 +1,22 @@
 package com.kunal.demo.scavengerhunt.entity;
 
 import javax.persistence.Entity;
+
 import java.io.Serializable;
+
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
+
 import java.lang.Override;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Group implements Serializable {
+public class UserGroup implements Serializable {
 
 	/**
 	 * 
@@ -65,7 +69,7 @@ public class Group implements Serializable {
 			return false;
 		}
 		if (id != null) {
-			return id.equals(((Group) that).id);
+			return id.equals(((UserGroup) that).id);
 		}
 		return super.equals(that);
 	}
