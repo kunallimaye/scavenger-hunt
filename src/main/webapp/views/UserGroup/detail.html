@@ -1,0 +1,34 @@
+<header ng-switch on="$location.path().indexOf('/UserGroups/new') > -1">
+    <h3 ng-switch-when="true">Create a new UserGroup</h3>
+    <h3 ng-switch-when="false">View or edit UserGroup</h3>
+</header>
+<form id="UserGroupForm" name="UserGroupForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    <div class="form-group" ng-class="{'has-error': UserGroupForm.groupName.$invalid}">
+        <label for="groupName" class="col-sm-2 control-label">Group Name</label>
+        <div id="groupNameControls" class="col-sm-10">
+            <input id="groupName" name="groupName" type="text" class="form-control" ng-model="userGroup.groupName" placeholder="Enter the UserGroup Group Name"></input>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': UserGroupForm.groupDisplayName.$invalid}">
+        <label for="groupDisplayName" class="col-sm-2 control-label">Group Display Name</label>
+        <div id="groupDisplayNameControls" class="col-sm-10">
+            <input id="groupDisplayName" name="groupDisplayName" type="text" class="form-control" ng-model="userGroup.groupDisplayName" placeholder="Enter the UserGroup Group Display Name"></input>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': UserGroupForm.description.$invalid}">
+        <label for="description" class="col-sm-2 control-label">Description</label>
+        <div id="descriptionControls" class="col-sm-10">
+            <input id="description" name="description" type="text" class="form-control" ng-model="userGroup.description" placeholder="Enter the UserGroup Description"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveUserGroup" name="saveUserGroup" class="btn btn-primary" ng-disabled="isClean() || UserGroupForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteUserGroup" name="deleteUserGroup" class="btn btn-danger" ng-show="userGroup.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    <div>
+</form>
