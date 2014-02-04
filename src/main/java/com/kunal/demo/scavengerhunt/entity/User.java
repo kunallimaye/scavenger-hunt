@@ -14,131 +14,115 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class User implements Serializable
-{
+public class User implements Serializable {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "id", updatable = false, nullable = false)
-   private Long id = null;
-   @Version
-   @Column(name = "version")
-   private int version = 0;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8871908157064564948L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, nullable = false)
+	private Long id;
 
-   @ManyToOne(optional = false)
-   private Group group;
+	@Version
+	@Column(name = "version")
+	private int version = 0;
 
-   @Column
-   private String userName;
+	@ManyToOne(optional = false)
+	private Group group;
 
-   @Column
-   private String displayName;
+	@Column
+	private String userName;
 
-   @Column
-   private String password;
+	@Column
+	private String displayName;
 
-   public Long getId()
-   {
-      return this.id;
-   }
+	@Column
+	private String password;
 
-   public void setId(final Long id)
-   {
-      this.id = id;
-   }
+	public Long getId() {
+		return this.id;
+	}
 
-   public int getVersion()
-   {
-      return this.version;
-   }
+	public void setId(final Long id) {
+		this.id = id;
+	}
 
-   public void setVersion(final int version)
-   {
-      this.version = version;
-   }
+	public int getVersion() {
+		return this.version;
+	}
 
-   @Override
-   public boolean equals(Object that)
-   {
-      if (this == that)
-      {
-         return true;
-      }
-      if (that == null)
-      {
-         return false;
-      }
-      if (getClass() != that.getClass())
-      {
-         return false;
-      }
-      if (id != null)
-      {
-         return id.equals(((User) that).id);
-      }
-      return super.equals(that);
-   }
+	public void setVersion(final int version) {
+		this.version = version;
+	}
 
-   @Override
-   public int hashCode()
-   {
-      if (id != null)
-      {
-         return id.hashCode();
-      }
-      return super.hashCode();
-   }
+	@Override
+	public boolean equals(Object that) {
+		if (this == that) {
+			return true;
+		}
+		if (that == null) {
+			return false;
+		}
+		if (getClass() != that.getClass()) {
+			return false;
+		}
+		if (id != null) {
+			return id.equals(((User) that).id);
+		}
+		return super.equals(that);
+	}
 
-   public Group getGroup()
-   {
-      return this.group;
-   }
+	@Override
+	public int hashCode() {
+		if (id != null) {
+			return id.hashCode();
+		}
+		return super.hashCode();
+	}
 
-   public void setGroup(final Group group)
-   {
-      this.group = group;
-   }
+	public Group getGroup() {
+		return this.group;
+	}
 
-   public String getUserName()
-   {
-      return this.userName;
-   }
+	public void setGroup(final Group group) {
+		this.group = group;
+	}
 
-   public void setUserName(final String userName)
-   {
-      this.userName = userName;
-   }
+	public String getUserName() {
+		return this.userName;
+	}
 
-   public String getDisplayName()
-   {
-      return this.displayName;
-   }
+	public void setUserName(final String userName) {
+		this.userName = userName;
+	}
 
-   public void setDisplayName(final String displayName)
-   {
-      this.displayName = displayName;
-   }
+	public String getDisplayName() {
+		return this.displayName;
+	}
 
-   public String getPassword()
-   {
-      return this.password;
-   }
+	public void setDisplayName(final String displayName) {
+		this.displayName = displayName;
+	}
 
-   public void setPassword(final String password)
-   {
-      this.password = password;
-   }
+	public String getPassword() {
+		return this.password;
+	}
 
-   @Override
-   public String toString()
-   {
-      String result = getClass().getSimpleName() + " ";
-      if (userName != null && !userName.trim().isEmpty())
-         result += "userName: " + userName;
-      if (displayName != null && !displayName.trim().isEmpty())
-         result += ", displayName: " + displayName;
-      if (password != null && !password.trim().isEmpty())
-         result += ", password: " + password;
-      return result;
-   }
+	public void setPassword(final String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		String result = getClass().getSimpleName() + " ";
+		if (userName != null && !userName.trim().isEmpty())
+			result += "userName: " + userName;
+		if (displayName != null && !displayName.trim().isEmpty())
+			result += ", displayName: " + displayName;
+		if (password != null && !password.trim().isEmpty())
+			result += ", password: " + password;
+		return result;
+	}
 }
