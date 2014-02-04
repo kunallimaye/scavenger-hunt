@@ -82,11 +82,11 @@ public class User implements Serializable {
 		return super.hashCode();
 	}
 
-	public UserGroup getGroup() {
+	public UserGroup getUserGroup() {
 		return this.userGroup;
 	}
 
-	public void setGroup(final UserGroup group) {
+	public void setUserGroup(final UserGroup group) {
 		this.userGroup = group;
 	}
 

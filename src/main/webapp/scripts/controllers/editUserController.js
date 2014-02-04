@@ -1,6 +1,6 @@
 
 
-angular.module('scavengerhunt').controller('EditUserController', function($scope, $routeParams, $location, UserResource ) {
+angular.module('scavengerhunt').controller('EditUserController', function($scope, $routeParams, $location, UserResource , UserGroupResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -9,6 +9,23 @@ angular.module('scavengerhunt').controller('EditUserController', function($scope
         var successCallback = function(data){
             self.original = data;
             $scope.user = new UserResource(self.original);
+            UserGroupResource.queryAll(function(items) {
+                $scope.userGroupSelectionList = $.map(items, function(item) {
+                    var wrappedObject = {
+                        id : item.id
+                    };
+                    var labelObject = {
+                        value : item.id,
+                        text : item.groupDisplayName
+                    };
+                    if($scope.user.userGroup && item.id == $scope.user.userGroup.id) {
+                        $scope.userGroupSelection = labelObject;
+                        $scope.user.userGroup = wrappedObject;
+                        self.original.userGroup = $scope.user.userGroup;
+                    }
+                    return labelObject;
+                });
+            });
         };
         var errorCallback = function() {
             $location.path("/Users");
@@ -46,6 +63,12 @@ angular.module('scavengerhunt').controller('EditUserController', function($scope
         $scope.user.$remove(successCallback, errorCallback);
     };
     
+    $scope.$watch("userGroupSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.user.userGroup = {};
+            $scope.user.userGroup.id = selection.value;
+        }
+    });
     
     $scope.get();
 });

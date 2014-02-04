@@ -2,6 +2,8 @@ package com.kunal.demo.scavengerhunt.rest;
 
 import com.kunal.demo.scavengerhunt.entity.UserGroup;
 import com.kunal.demo.scavengerhunt.rest.UserGroupEndpoint;
+import com.kunal.demo.scavengerhunt.utils.Persistence;
+import com.kunal.demo.scavengerhunt.utils.Resources;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
@@ -26,6 +28,8 @@ public class UserGroupEndpointTest {
 	public static Archive<?> createDeployment() {
 		return ShrinkWrap.create(WebArchive.class, "user-group-endpoint-test.war")
 				.addClass(UserGroup.class)
+				.addClass(Persistence.class)
+				.addClass(Resources.class)
 				.addClass(UserGroupEndpoint.class)
 				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource("test-ds.xml")

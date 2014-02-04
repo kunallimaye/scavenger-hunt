@@ -22,12 +22,12 @@ public class UserGroup implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4425305235297488414L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
-	
+
 	@Version
 	@Column(name = "version")
 	private int version = 0;
