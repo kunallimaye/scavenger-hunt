@@ -1,6 +1,5 @@
 'use strict';
-
-angular.module('scavengerhunt',['ngRoute','ngResource'])
+angular.module('scavengerhunt',['ngMap','ngRoute','ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
