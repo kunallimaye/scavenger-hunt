@@ -1,23 +1,8 @@
 
-angular.module('scavengerhunt').controller('NewUserController', function ($scope, $location, locationParser, UserResource , GroupResource) {
+angular.module('scavengerhunt').controller('NewUserController', function ($scope, $location, locationParser, UserResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.user = $scope.user || {};
-    
-    $scope.groupList = GroupResource.queryAll(function(items){
-        $scope.groupSelectionList = $.map(items, function(item) {
-            return ( {
-                value : item.id,
-                text : item.groupName
-            });
-        });
-    });
-    $scope.$watch("groupSelection", function(selection) {
-        if ( typeof selection != 'undefined') {
-            $scope.user.group = {};
-            $scope.user.group.id = selection.value;
-        }
-    });
     
 
     $scope.save = function() {

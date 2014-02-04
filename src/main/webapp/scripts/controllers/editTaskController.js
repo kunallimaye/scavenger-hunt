@@ -16,7 +16,7 @@ angular.module('scavengerhunt').controller('EditTaskController', function($scope
                     };
                     var labelObject = {
                         value : item.id,
-                        text : item.userName
+                        text : item.displayName
                     };
                     if($scope.task.owner && item.id == $scope.task.owner.id) {
                         $scope.ownerSelection = labelObject;

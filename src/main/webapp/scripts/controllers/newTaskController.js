@@ -8,7 +8,7 @@ angular.module('scavengerhunt').controller('NewTaskController', function ($scope
         $scope.ownerSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.id,
-                text : item.userName
+                text : item.displayName
             });
         });
     });

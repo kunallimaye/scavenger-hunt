@@ -13,6 +13,9 @@ angular.module('scavengerhunt',['ngRoute','ngResource'])
       .when('/Users',{templateUrl:'views/User/search.html',controller:'SearchUserController'})
       .when('/Users/new',{templateUrl:'views/User/detail.html',controller:'NewUserController'})
       .when('/Users/edit/:UserId',{templateUrl:'views/User/detail.html',controller:'EditUserController'})
+      .when('/UserGroups',{templateUrl:'views/UserGroup/search.html',controller:'SearchUserGroupController'})
+      .when('/UserGroups/new',{templateUrl:'views/UserGroup/detail.html',controller:'NewUserGroupController'})
+      .when('/UserGroups/edit/:UserGroupId',{templateUrl:'views/UserGroup/detail.html',controller:'EditUserGroupController'})
       .otherwise({
         redirectTo: '/'
       });

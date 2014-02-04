@@ -19,7 +19,7 @@
     <div class="form-group">
         <label for="owner" class="col-sm-2 control-label">Owner</label>
         <div class="col-sm-10">
-            <select id="owner" name="owner" class="form-control" ng-model="search.owner" ng-options="o as o.userName for o in ownerList">
+            <select id="owner" name="owner" class="form-control" ng-model="search.owner" ng-options="o as o.displayName for o in ownerList">
                 <option value="">Choose a Owner</option>
             </select>
         </div>
@@ -72,7 +72,7 @@
             <tbody id="search-results-body">
                 <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
                     <td><a href="#/Tasks/edit/{{result.id}}">{{result.taskId}}</a></td>
-                        <td><a href="#/Tasks/edit/{{result.id}}">{{result.owner.userName}}</a></td>
+                        <td><a href="#/Tasks/edit/{{result.id}}">{{result.owner.displayName}}</a></td>
                     <td><a href="#/Tasks/edit/{{result.id}}">{{result.createdOn| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
                     <td><a href="#/Tasks/edit/{{result.id}}">{{result.name}}</a></td>
                     <td><a href="#/Tasks/edit/{{result.id}}">{{result.description}}</a></td>

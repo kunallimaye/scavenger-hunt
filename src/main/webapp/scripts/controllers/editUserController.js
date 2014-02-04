@@ -1,6 +1,6 @@
 
 
-angular.module('scavengerhunt').controller('EditUserController', function($scope, $routeParams, $location, UserResource , GroupResource) {
+angular.module('scavengerhunt').controller('EditUserController', function($scope, $routeParams, $location, UserResource ) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -9,23 +9,6 @@ angular.module('scavengerhunt').controller('EditUserController', function($scope
         var successCallback = function(data){
             self.original = data;
             $scope.user = new UserResource(self.original);
-            GroupResource.queryAll(function(items) {
-                $scope.groupSelectionList = $.map(items, function(item) {
-                    var wrappedObject = {
-                        id : item.id
-                    };
-                    var labelObject = {
-                        value : item.id,
-                        text : item.groupName
-                    };
-                    if($scope.user.group && item.id == $scope.user.group.id) {
-                        $scope.groupSelection = labelObject;
-                        $scope.user.group = wrappedObject;
-                        self.original.group = $scope.user.group;
-                    }
-                    return labelObject;
-                });
-            });
         };
         var errorCallback = function() {
             $location.path("/Users");
@@ -63,12 +46,6 @@ angular.module('scavengerhunt').controller('EditUserController', function($scope
         $scope.user.$remove(successCallback, errorCallback);
     };
     
-    $scope.$watch("groupSelection", function(selection) {
-        if (typeof selection != 'undefined') {
-            $scope.user.group = {};
-            $scope.user.group.id = selection.value;
-        }
-    });
     
     $scope.get();
 });

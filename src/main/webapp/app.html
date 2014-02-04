@@ -37,6 +37,7 @@
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Groups')}" href="#/Groups" data-toggle="offcanvas">Groups</a>
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Tasks')}" href="#/Tasks" data-toggle="offcanvas">Tasks</a>
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Users')}" href="#/Users" data-toggle="offcanvas">Users</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('UserGroups')}" href="#/UserGroups" data-toggle="offcanvas">UserGroups</a>
                         </div>
                     </nav>
                 </div>
@@ -82,5 +83,9 @@
     <script src="scripts/controllers/newUserController.js"></script>
     <script src="scripts/controllers/searchUserController.js"></script>
     <script src="scripts/controllers/editUserController.js"></script>
+    <script src="scripts/services/UserGroupFactory.js"></script>
+    <script src="scripts/controllers/newUserGroupController.js"></script>
+    <script src="scripts/controllers/searchUserGroupController.js"></script>
+    <script src="scripts/controllers/editUserGroupController.js"></script>
 </body>
 </html>

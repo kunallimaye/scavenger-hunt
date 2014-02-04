@@ -1,6 +1,6 @@
 
 
-angular.module('scavengerhunt').controller('SearchUserController', function($scope, $http, UserResource , GroupResource) {
+angular.module('scavengerhunt').controller('SearchUserController', function($scope, $http, UserResource ) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,7 +17,6 @@ angular.module('scavengerhunt').controller('SearchUserController', function($sco
         }
         return max;
     };
-    $scope.groupList = GroupResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = UserResource.queryAll(function(){
