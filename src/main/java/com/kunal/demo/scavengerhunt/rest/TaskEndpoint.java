@@ -11,9 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-
 import com.kunal.demo.scavengerhunt.entity.Task;
-import com.kunal.demo.scavengerhunt.utils.Persistence;
 
 /**
  * 
@@ -22,7 +20,7 @@ import com.kunal.demo.scavengerhunt.utils.Persistence;
 @Path("/tasks")
 public class TaskEndpoint
 {
-   @PersistenceContext(unitName = Persistence.PERSISTENCE_UNIT)
+   @PersistenceContext(unitName = "scavenger-hunt")
    private EntityManager em;
 
    @POST

@@ -11,18 +11,16 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-
 import com.kunal.demo.scavengerhunt.entity.UserGroup;
-import com.kunal.demo.scavengerhunt.utils.Persistence;
 
 /**
  * 
  */
 @Stateless
-@Path("/user-groups")
+@Path("/usergroups")
 public class UserGroupEndpoint
 {
-   @PersistenceContext(unitName = Persistence.PERSISTENCE_UNIT)
+   @PersistenceContext(unitName = "scavenger-hunt")
    private EntityManager em;
 
    @POST
@@ -51,7 +49,7 @@ public class UserGroupEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<UserGroup> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM UserGroup g WHERE g.id = :entityId ORDER BY g.id", UserGroup.class);
+      TypedQuery<UserGroup> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM UserGroup u WHERE u.id = :entityId ORDER BY u.id", UserGroup.class);
       findByIdQuery.setParameter("entityId", id);
       UserGroup entity;
       try
@@ -73,7 +71,7 @@ public class UserGroupEndpoint
    @Produces("application/json")
    public List<UserGroup> listAll()
    {
-      final List<UserGroup> results = em.createQuery("SELECT DISTINCT g FROM UserGroup g ORDER BY g.id", UserGroup.class).getResultList();
+      final List<UserGroup> results = em.createQuery("SELECT DISTINCT u FROM UserGroup u ORDER BY u.id", UserGroup.class).getResultList();
       return results;
    }
 

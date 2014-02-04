@@ -29,7 +29,7 @@ public class User implements Serializable {
 	@Column(name = "version")
 	private int version = 0;
 
-	@ManyToOne(optional = false)
+	@ManyToOne
 	private UserGroup userGroup;
 
 	@Column
