@@ -51,7 +51,7 @@ public class UserEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<User> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.group WHERE u.id = :entityId ORDER BY u.id", User.class);
+      TypedQuery<User> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.userGroup WHERE u.id = :entityId ORDER BY u.id", User.class);
       findByIdQuery.setParameter("entityId", id);
       User entity;
       try
@@ -73,7 +73,7 @@ public class UserEndpoint
    @Produces("application/json")
    public List<User> listAll()
    {
-      final List<User> results = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.group ORDER BY u.id", User.class).getResultList();
+      final List<User> results = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.userGroup ORDER BY u.id", User.class).getResultList();
       return results;
    }
 
