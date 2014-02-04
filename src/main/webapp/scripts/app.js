@@ -4,6 +4,15 @@ angular.module('scavengerhunt',['ngRoute','ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
+      .when('/Groups',{templateUrl:'views/Group/search.html',controller:'SearchGroupController'})
+      .when('/Groups/new',{templateUrl:'views/Group/detail.html',controller:'NewGroupController'})
+      .when('/Groups/edit/:GroupId',{templateUrl:'views/Group/detail.html',controller:'EditGroupController'})
+      .when('/Tasks',{templateUrl:'views/Task/search.html',controller:'SearchTaskController'})
+      .when('/Tasks/new',{templateUrl:'views/Task/detail.html',controller:'NewTaskController'})
+      .when('/Tasks/edit/:TaskId',{templateUrl:'views/Task/detail.html',controller:'EditTaskController'})
+      .when('/Users',{templateUrl:'views/User/search.html',controller:'SearchUserController'})
+      .when('/Users/new',{templateUrl:'views/User/detail.html',controller:'NewUserController'})
+      .when('/Users/edit/:UserId',{templateUrl:'views/User/detail.html',controller:'EditUserController'})
       .otherwise({
         redirectTo: '/'
       });

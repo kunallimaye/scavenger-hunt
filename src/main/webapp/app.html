@@ -34,6 +34,9 @@
                     </a>
                     <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
                         <div id="sidebar-entries" class="list-group">
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Groups')}" href="#/Groups" data-toggle="offcanvas">Groups</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Tasks')}" href="#/Tasks" data-toggle="offcanvas">Tasks</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Users')}" href="#/Users" data-toggle="offcanvas">Users</a>
                         </div>
                     </nav>
                 </div>
@@ -67,5 +70,17 @@
     <script src="scripts/filters/startFromFilter.js"></script>
     <script src="scripts/filters/genericSearchFilter.js"></script>
     <script src="scripts/services/locationParser.js"></script>
+    <script src="scripts/services/GroupFactory.js"></script>
+    <script src="scripts/controllers/newGroupController.js"></script>
+    <script src="scripts/controllers/searchGroupController.js"></script>
+    <script src="scripts/controllers/editGroupController.js"></script>
+    <script src="scripts/services/TaskFactory.js"></script>
+    <script src="scripts/controllers/newTaskController.js"></script>
+    <script src="scripts/controllers/searchTaskController.js"></script>
+    <script src="scripts/controllers/editTaskController.js"></script>
+    <script src="scripts/services/UserFactory.js"></script>
+    <script src="scripts/controllers/newUserController.js"></script>
+    <script src="scripts/controllers/searchUserController.js"></script>
+    <script src="scripts/controllers/editUserController.js"></script>
 </body>
 </html>
