@@ -19,7 +19,7 @@ import com.kunal.demo.scavengerhunt.utils.Persistence;
  * 
  */
 @Stateless
-@Path("/groups")
+@Path("/user-groups")
 public class UserGroupEndpoint
 {
    @PersistenceContext(unitName = Persistence.PERSISTENCE_UNIT)
@@ -51,7 +51,7 @@ public class UserGroupEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<UserGroup> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM Group g WHERE g.id = :entityId ORDER BY g.id", UserGroup.class);
+      TypedQuery<UserGroup> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM UserGroup g WHERE g.id = :entityId ORDER BY g.id", UserGroup.class);
       findByIdQuery.setParameter("entityId", id);
       UserGroup entity;
       try
@@ -73,7 +73,7 @@ public class UserGroupEndpoint
    @Produces("application/json")
    public List<UserGroup> listAll()
    {
-      final List<UserGroup> results = em.createQuery("SELECT DISTINCT g FROM Group g ORDER BY g.id", UserGroup.class).getResultList();
+      final List<UserGroup> results = em.createQuery("SELECT DISTINCT g FROM UserGroup g ORDER BY g.id", UserGroup.class).getResultList();
       return results;
    }
 
