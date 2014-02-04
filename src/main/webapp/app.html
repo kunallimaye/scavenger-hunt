@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style id="my-css">
+  map, div[map] {display:block; width: 600px; height: 400px}
+</style>
 	<title>Scavenger-hunt</title>
     <link href="styles/bootstrap.css" rel="stylesheet" media="screen">
     <link href="styles/bootstrap-theme.css" rel="stylesheet" media="screen">
@@ -40,6 +43,13 @@
                         </div>
                     </nav>
                 </div>
+                
+                <div class="col-sm-offset-4" id="my-html" style="width:600px; height:400px">
+			      <map zoom="11" center="Melbourne, Victoria, Australia">
+			      	<marker position="current" animation="Animation.BOUNCE" centered="true"></marker>
+		    	  </map>
+	    	  </div>
+                
                 <!-- main area-->
                 <div class="col-sm-offset-1 col-xs-12 col-sm-8 well mainarea">
                     <div id="main" ng-view>
@@ -64,6 +74,8 @@
     <script src="scripts/vendor/angular-resource.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/offcanvas.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+	<script src='./scripts/vendor/ng-map.min.js'></script>
     <script src="scripts/directives/datepicker.js"></script>
     <script src="scripts/directives/timepicker.js"></script>
     <script src="scripts/directives/datetimepicker.js"></script>
